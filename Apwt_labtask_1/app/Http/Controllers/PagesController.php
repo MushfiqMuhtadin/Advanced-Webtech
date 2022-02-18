@@ -31,6 +31,10 @@ class PagesController extends Controller
     {
         return view("team") ;
     }
+    public function signup()
+    {
+        return "ok";
+    }
 
     public function profile()
     {

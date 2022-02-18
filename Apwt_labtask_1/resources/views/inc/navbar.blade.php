@@ -16,6 +16,8 @@
         <div class="container-fluid">
             <button type="button" class="btn btn-light ms-5"> <a class="nav-link active" aria-current="page" href="{{route('profile')}}">Profile</a></button>
 
+            <button type="button" class="btn btn-light ms-5"> <a class="nav-link active" aria-current="page" href="">Signup</a></button>
+
             <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0  ">
                     <li class="nav-item me-2">
