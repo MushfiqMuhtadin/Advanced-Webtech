@@ -19,11 +19,22 @@ Route::get('/', function () {
 
 Route::get('/database', [studentcontroller::class, 'databaseget'])->name('database');
 
+Route::get('/home', [studentcontroller::class, 'homeget'])->name('home');
+
+Route::get('/login', [studentcontroller::class, 'loginget'])->name('login');
+Route::post('login/post', [studentcontroller::class, 'loginpost'])->name('login.post');
+
+Route::get('/logout', [studentcontroller::class, 'logoutget'])->name('logout');
+
 Route::get('/signup', [studentcontroller::class, 'signupget'])->name('signup');
 Route::post('/signup', [studentcontroller::class, 'signuppost'])->name('signup');
 
 Route::get('/crud', [studentcontroller::class, 'crudget'])->name('crud');
 
 Route::get('/edit/{id}', [studentcontroller::class, 'editget'])->name('edit');
-Route::post('/update/{id}', [studentcontroller::class, 'updatepost'])->name('update');
+Route::post('/edit/{id}', [studentcontroller::class, 'updatepost'])->name('update');
 Route::get('/delete/{id}', [studentcontroller::class, 'deleteget'])->name('delete');
+
+Route::get('/admin/dash', [studentcontroller::class, 'admindash'])->name('admindash')->middleware('validadmin');
+
+Route::get('/user/dash', [studentcontroller::class, 'userdash'])->name('userdash')->middleware('validuser');

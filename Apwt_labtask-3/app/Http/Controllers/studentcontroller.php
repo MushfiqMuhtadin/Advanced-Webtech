@@ -14,6 +14,63 @@ class studentcontroller extends Controller
         return $student;                       
     }
     
+    public function homeget()
+    {
+     
+        return   view("home");                       
+    }
+    
+    public function loginget()
+    {
+     
+        return   view("login");                       
+    }
+    
+
+    public function loginpost(Request $request)
+    {
+
+        $result = student::where('email', $request->email)
+            ->where('password', $request->password)
+
+            ->first();
+
+        if ($result['usertype'] == 'customer') {
+            $request->session()->put('email', $request->email);
+
+            return redirect()->route('userdash');
+        }
+        if ($result['usertype'] == 'admin') {
+            $request->session()->put('email', $request->email);
+
+            return redirect()->route('admindash');
+        }
+
+         else {
+            $request->session()->flash('msg', 'invaild credentials');
+            return redirect('signup');
+        }
+    }
+    public function admindash()
+    {
+
+        return view("admin");
+
+    }
+    public function userdash()
+    {
+
+        return view("user");
+
+    }
+
+    public function logoutget()
+    {
+
+        session()->forget('email');
+        return redirect()->route('login');
+    }
+
     public function signupget()
     {
        return view("signup");                     
@@ -33,6 +90,8 @@ class studentcontroller extends Controller
         $student->name=$request->name;
         $student->dob=$request->dob;
         $student->email=$request->email;
+        $student->usertype=$request->usertype;
+        $student->password = $request->password;
         $student->save();
         return redirect(Route('signup'));
 
@@ -54,6 +113,8 @@ class studentcontroller extends Controller
         $student->name = $request->name;
         $student->dob = $request->dob;
         $student->email = $request->email;
+        $student->password = $request->password;
+        $student->usertype = $request->usertype;
         $student->save();
         return redirect(Route('crud'));
         
@@ -62,7 +123,6 @@ class studentcontroller extends Controller
     public function deleteget($id){
         $student = student::destroy($id);
         return redirect(Route('crud'));
-
-
     }
+    
 }

@@ -24,6 +24,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('crud')}}">crud</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('home')}}">home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('login')}}">login</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-danger"><a class="nav-link" href="{{route('logout')}}">
+                                <h4>Logout</h4>
+                            </a></button>
+
+                    </li>
+
 
                 </ul>
             </div>
