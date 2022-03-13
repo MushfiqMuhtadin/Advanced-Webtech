@@ -28,7 +28,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="passwordkak" class="form-label">Password</label>
+                        <label for="passwordkaka" class="form-label">Password</label>
                         <input type="passwordkaka" class="form-control" name="password">
                         @error('password')
                         <span class="text-danger">{{$message}}</span>
